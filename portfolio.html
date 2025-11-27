@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yassine Maraoui | AI & Software Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #111827;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.2);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.55);
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 0.98rem;
+    }
+
+    .logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0, #4f46e5, #06b6d4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.7);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #6366f1, #06b6d4);
+      border-radius: 999px;
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 56px 18px;
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 40px;
+      align-items: center;
+      padding-top: 72px;
+      padding-bottom: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.18);
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      line-height: 1.2;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #6366f1, #22d3ee, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin-bottom: 22px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .chip {
+      font-size: 0.78rem;
+      padding: 6px 11px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #e5e7eb;
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.22), transparent);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      padding: 9px 18px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
+        border-color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #22d3ee);
+      color: #0b1020;
+      font-weight: 600;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(56, 189, 248, 0.45);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.7);
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-pill {
+      font-size: 0.72rem;
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(22, 163, 74, 0.12);
+      color: #4ade80;
+      border: 1px solid rgba(22, 163, 74, 0.5);
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 24px;
+      background: radial-gradient(circle at 0 0, rgba(96, 165, 250, 0.2), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(236, 72, 153, 0.18), transparent 55%),
+        #020617;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 20px 20px 18px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-card-dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #4b5563;
+    }
+
+    .dot:nth-child(1) {
+      background: #f97373;
+    }
+    .dot:nth-child(2) {
+      background: #facc15;
+    }
+    .dot:nth-child(3) {
+      background: #22c55e;
+    }
+
+    .hero-card-body {
+      padding-top: 4px;
+    }
+
+    .code-line {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+      color: #e5e7eb;
+      margin-bottom: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      opacity: 0.9;
+    }
+
+    .code-line span {
+      color: #93c5fd;
+    }
+
+    .glow-orb {
+      position: absolute;
+      inset: auto auto -40px -40px;
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.4), transparent 60%);
+      filter: blur(4px);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hero-stat strong {
+      font-size: 0.98rem;
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      section {
+        padding-inline: 16px;
+      }
+    }
+
+    /* Sections */
+
+    .section-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+
+    .section-title span {
+      color: var(--accent);
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 24px;
+    }
+
+    /* Skills */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: linear-gradient(135deg, #020617, #020617);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 14px 16px 12px;
+    }
+
+    .skill-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .skill-tag {
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    /* Projects */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.14), transparent 55%),
+        #020617;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 16px 16px 14px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.8);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .project-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .project-desc {
+      font-size: 0.86rem;
+      color: #d1d5db;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+      font-size: 0.76rem;
+    }
+
+    .project-tech span {
+      padding: 3px 7px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: #e5e7eb;
+    }
+
+    /* Experience */
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-left: 1px solid rgba(55, 65, 81, 0.9);
+      margin-left: 8px;
+      padding-left: 16px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 4px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -25px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.25);
+    }
+
+    .timeline-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+
+    .timeline-role {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .timeline-company {
+      font-size: 0.86rem;
+      color: #cbd5f5;
+    }
+
+    .timeline-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .timeline-desc {
+      font-size: 0.86rem;
+      color: #e5e7eb;
+    }
+
+    .timeline-bullets {
+      margin-top: 4px;
+      padding-left: 16px;
+      font-size: 0.82rem;
+      color: #cbd5f5;
+    }
+
+    .timeline-bullets li {
+      margin-bottom: 4px;
+    }
+
+    /* Certificates */
+
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .cert-card {
+      background: #020617;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 14px 16px 12px;
+      font-size: 0.85rem;
+    }
+
+    .cert-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .cert-issuer {
+      color: #cbd5f5;
+      font-size: 0.82rem;
+      margin-bottom: 2px;
+    }
+
+    .cert-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .cert-link {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: #93c5fd;
+    }
+
+    .cert-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact */
+
+    .contact-card {
+      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.16), transparent 60%),
+        #020617;
+      border-radius: 22px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 20px 18px 18px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    .pill-link {
+      border-radius: var(--radius-pill);
+      padding: 7px 13px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.9);
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .pill-link:hover {
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+    }
+
+    footer {
+      padding: 24px 18px 30px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer span {
+      color: #e5e7eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav-inner">
+        <div class="logo">
+          <div class="logo-badge">YM</div>
+          <div>
+            <div style="font-size:0.86rem;">Yassine Maraoui</div>
+            <div style="font-size:0.72rem; color:var(--muted);">AI & Software Engineer</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#certs">Certificates</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero / About -->
+      <section id="about">
+        <div class="hero">
+          <div>
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              Final-year AI & Software Engineering student
+            </div>
+            <h1 class="hero-title">
+              Building intelligent, reliable<br />
+              <span>AI-driven systems</span>.
+            </h1>
+            <p class="hero-subtitle">
+              I’m an AI-focused software engineer with experience in machine learning, web scraping,
+              backend systems, and testing. I enjoy turning complex, real-world problems into
+              practical solutions with clean engineering and data-driven decisions.
+            </p>
+
+            <div class="hero-tags">
+              <span class="chip">Machine Learning & Deep Learning</span>
+              <span class="chip">NLP & Sentiment Analysis</span>
+              <span class="chip">MERN & Backend</span>
+              <span class="chip">Software Testing & QA</span>
+              <span class="chip">Web Scraping & Data Viz</span>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">
+                View Projects
+              </a>
+              <a href="#experience" class="btn btn-ghost">
+                Experience & Internships
+              </a>
+            </div>
+
+            <div class="hero-meta">
+              <span><span class="badge-pill">Communication Skills for Engineers</span></span>
+              <span>Coursera-certified in testing, ethics, and modern dev practices</span>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-card">
+              <div class="hero-card-header">
+                <div class="hero-card-dots">
+                  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                </div>
+                <span>portfolio.yassine</span>
+              </div>
+              <div class="hero-card-body">
+                <div class="code-line">
+                  <span>&gt;&gt;</span> role: <span>"AI & Software Engineer"</span>
+                </div>
+                <div class="code-line">
+                  <span>&gt;&gt;</span> domains: ["ML", "web scraping", "MERN", "testing"]
+                </div>
+                <div class="code-line">
+                  <span>&gt;&gt;</span> mindset: "ship maintainable, well-tested systems"
+                </div>
+                <div class="code-line">
+                  <span>&gt;&gt;</span> focus: "AI + backend + quality"
+                </div>
+              </div>
+              <div class="hero-stats">
+                <div class="hero-stat">
+                  <span>Internships</span>
+                  <strong>5+</strong>
+                </div>
+                <div class="hero-stat">
+                  <span>Certificates</span>
+                  <strong>15+</strong>
+                </div>
+                <div class="hero-stat">
+                  <span>Core Stack</span>
+                  <strong>Python · JS · Java</strong>
+                </div>
+              </div>
+              <div class="glow-orb"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills">
+        <div class="section-label">Skills</div>
+        <h2 class="section-title">Core <span>Capabilities</span></h2>
+        <p class="section-subtitle">
+          A combination of AI, software engineering, testing, and data skills — with a strong
+          theoretical base from SMU (South Mediterranean University) and hands-on project work.
+        </p>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-title">AI & Machine Learning</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Scikit-Learn</span>
+              <span class="skill-tag">TensorFlow</span>
+              <span class="skill-tag">Artificial Neural Networks</span>
+              <span class="skill-tag">Machine Learning</span>
+              <span class="skill-tag">Artificial Intelligence (AI)</span>
+              <span class="skill-tag">Data Analysis</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-title">Web, Backend & Cloud</div>
+            <div class="skill-tags">
+              <span class="skill-tag">MERN Stack</span>
+              <span class="skill-tag">React.js / React Native</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Web Development</span>
+              <span class="skill-tag">Cloud Computing</span>
+              <span class="skill-tag">SQL / NoSQL</span>
+              <span class="skill-tag">Android Development</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-title">Testing & Quality</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Black-box & White-box Testing</span>
+              <span class="skill-tag">TDD (Java Testing)</span>
+              <span class="skill-tag">JUnit & Mocking</span>
+              <span class="skill-tag">Performance Testing (JMeter)</span>
+              <span class="skill-tag">Selenium Automation</span>
+              <span class="skill-tag">Software Testing</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-title">Data & Analytics</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Web Scraping</span>
+              <span class="skill-tag">Data Visualization</span>
+              <span class="skill-tag">Sentiment Analysis</span>
+              <span class="skill-tag">Statistical Data Analysis</span>
+              <span class="skill-tag">Trend Analysis</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-title">Software Engineering & Methods</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Project Management</span>
+              <span class="skill-tag">Team Leadership</span>
+              <span class="skill-tag">Agile Methodologies</span>
+              <span class="skill-tag">Software Architecture</span>
+              <span class="skill-tag">Software Development Methodologies</span>
+              <span class="skill-tag">Computer Networks</span>
+              <span class="skill-tag">Cybersecurity (foundations)</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-title">Programming Languages</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">C</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">Kotlin</span>
+              <span class="skill-tag">JavaScript</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <div class="section-label">Projects</div>
+        <h2 class="section-title">Selected <span>Projects</span></h2>
+        <p class="section-subtitle">
+          Some of the projects I’ve worked on that combine AI, data, and software engineering in a
+          practical way.
+        </p>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3 class="project-title">Solar Power Production Prediction</h3>
+            <div class="project-meta">Data Analytics & AI · Time Series</div>
+            <p class="project-desc">
+              End-to-end forecasting pipeline for solar energy output using historical weather and
+              production data. Included feature engineering, model benchmarking, correlation
+              analysis, and error metric evaluation.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>Pandas</span>
+              <span>Scikit-Learn</span>
+              <span>LSTM / Conv1D</span>
+              <span>TimesNet-style models</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">Fraud Detection with Graph Neural Networks</h3>
+            <div class="project-meta">Advanced ML · Graph Learning</div>
+            <p class="project-desc">
+              Built a GNN-based model to detect suspicious mobile money transactions by modeling
+              senders, receivers, and operations as a graph, then learning patterns that indicate
+              fraudulent behavior.
+            </p>
+            <div class="project-tech">
+              <span>PyTorch Geometric</span>
+              <span>Graph Modeling</span>
+              <span>Node Classification</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">miniBERT for Named Entity Recognition</h3>
+            <div class="project-meta">NLP · Transformers</div>
+            <p class="project-desc">
+              Implemented a small transformer architecture from scratch with tokenization,
+              positional embeddings, multi-head self-attention, encoder blocks, and token-level
+              classification for NER on noisy datasets.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>PyTorch</span>
+              <span>Transformers</span>
+              <span>NER</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <h3 class="project-title">Healthcare Web & Mobile Booking App</h3>
+            <div class="project-meta">Full-stack · Real-world</div>
+            <p class="project-desc">
+              Platform that enables families to book nurses for elderly relatives, with real-time
+              booking, proximity to hospitals, secure auth, and messaging between families and
+              medical staff.
+            </p>
+            <div class="project-tech">
+              <span>React</span>
+              <span>React Native</span>
+              <span>Node.js</span>
+              <span>MySQL</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Experience / Internships -->
+      <section id="experience">
+        <div class="section-label">Experience</div>
+        <h2 class="section-title">Internships & <span>Professional Work</span></h2>
+        <p class="section-subtitle">
+          Practical experience across game development, AI newsletter systems, web scraping,
+          e-commerce, and UX for booking platforms.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role">Game Development Intern</div>
+                <div class="timeline-company">Anypli · Hybrid</div>
+              </div>
+              <div class="timeline-date">Aug 2025 · 1 month</div>
+            </div>
+            <p class="timeline-desc">
+              Designed and developed a 3D interactive multiplayer game using Lua scripting in
+              Roblox Studio.
+            </p>
+            <ul class="timeline-bullets">
+              <li>
+                Implemented role-based gameplay (runner vs. chasers) with dynamic chase mechanics in
+                an open-world environment.
+              </li>
+              <li>
+                Built character movement systems, pathfinding algorithms, and collision detection
+                for smooth real-time gameplay.
+              </li>
+              <li>
+                Developed game logic for player/bot roles, spawn systems, actions, win/lose
+                conditions, and multiplayer synchronization.
+              </li>
+              <li>Optimized performance and tested gameplay for a balanced, engaging experience.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role">
+                  Web Scraping, Trend Analysis & Data Visualization Intern
+                </div>
+                <div class="timeline-company">Smartech Mahdia · On-site</div>
+              </div>
+              <div class="timeline-date">Jul 2025 – Aug 2025 · 2 months</div>
+            </div>
+            <p class="timeline-desc">
+              Worked on extracting insights from news articles using web scraping and analytics.
+            </p>
+            <ul class="timeline-bullets">
+              <li>Developed web scraping scripts to collect and clean news data.</li>
+              <li>
+                Performed trend analysis and visualized patterns in topics, frequency, and
+                sentiment over time.
+              </li>
+              <li>
+                Applied sentiment analysis and data visualization techniques to highlight key
+                insights.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role">Project Collaboration — AI Newsletter System</div>
+                <div class="timeline-company">Orange · Remote</div>
+              </div>
+              <div class="timeline-date">Jan 2025 – May 2025 · 5 months</div>
+            </div>
+            <p class="timeline-desc">
+              Built an admin-focused newsletter management system enhanced with AI features.
+            </p>
+            <ul class="timeline-bullets">
+              <li>
+                Developed a newsletter platform allowing admins to easily navigate, create, and
+                manage newsletters.
+              </li>
+              <li>
+                Integrated AI-based sentiment analysis and web scraping of news articles to
+                auto-suggest and enrich newsletter content.
+              </li>
+              <li>
+                Used SQL and JavaScript (and related tools) to implement data management and
+                application logic.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role">MERN Stack Intern</div>
+                <div class="timeline-company">ALFA Computers & Consulting</div>
+              </div>
+              <div class="timeline-date">Jun 2023 – Jul 2023 · 2 months</div>
+            </div>
+            <p class="timeline-desc">
+              Developed an e-commerce MERN stack application focused on motorbike products.
+            </p>
+            <ul class="timeline-bullets">
+              <li>
+                Implemented product listing, cart flow, and basic order management using MongoDB,
+                Express, React, and Node.js.
+              </li>
+              <li>
+                Practiced project management and collaboration, from requirements understanding to
+                delivery.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role">Pre-engineering Software Intern</div>
+                <div class="timeline-company">EVASION VOYAGES · On-site</div>
+              </div>
+              <div class="timeline-date">Jun 2022 – Aug 2022 · 3 months</div>
+            </div>
+            <p class="timeline-desc">
+              Worked on UI/UX development for an online travel booking platform.
+            </p>
+            <ul class="timeline-bullets">
+              <li>Designed and refined user flows for searching and booking trips.</li>
+              <li>
+                Contributed React.js front-end components with a focus on usability and responsive
+                design.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certificates -->
+      <section id="certs">
+        <div class="section-label">Certificates</div>
+        <h2 class="section-title">Highlighted <span>Certifications</span></h2>
+        <p class="section-subtitle">
+          A selection of certificates that strengthen my foundations in programming, testing,
+          ethics, communication, and modern software practices. More are available in my Coursera
+          profile.
+        </p>
+
+        <div class="certs-grid">
+          <div class="cert-card">
+            <div class="cert-title">Black-box and White-box Testing</div>
+            <div class="cert-issuer">University of Minnesota</div>
+            <div class="cert-meta">Issued Apr 2025 · Credential ID: CBGNMCTHZ5J0</div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-title">Ethics, Technology and Engineering</div>
+            <div class="cert-issuer">Eindhoven University of Technology · 4TU.Ethics</div>
+            <div class="cert-meta">Issued Apr 2025 · Credential ID: TY1CNCHWKJ61</div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-title">Java Testing: An Introduction to TDD</div>
+            <div class="cert-issuer">LearnQuest</div>
+            <div class="cert-meta">Issued Apr 2025 · Credential ID: CGVNCJDSRJ2Q</div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-title">
+              Performance Testing with JMeter for Absolute Beginners
+            </div>
+            <div class="cert-issuer">Coursera Project Network</div>
+            <div class="cert-meta">Issued Apr 2025 · Credential ID: 2Z5Z452YA7RG</div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-title">
+              Create Your First Automation Script Using Selenium and Java
+            </div>
+            <div class="cert-issuer">Coursera Project Network</div>
+            <div class="cert-meta">Issued Mar 2025 · Credential ID: U1ECH8DAE5VY</div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-title">React Native</div>
+            <div class="cert-issuer">Meta</div>
+            <div class="cert-meta">Issued Feb 2024 · Credential ID: QXH63G3WLFZL</div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-title">Programming Fundamentals in Kotlin</div>
+            <div class="cert-issuer">Meta</div>
+            <div class="cert-meta">Issued May 2024 · Credential ID: HK3TANFMXFNP</div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-title">Communication Skills for Engineers Specialization</div>
+            <div class="cert-issuer">Rice University</div>
+            <div class="cert-meta">Issued Dec 2022 · Credential ID: BV742WEK2SH3</div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;">
+          <a
+            href="https://www.coursera.org/user/100f0e10ff6834d52016dcf016855853"
+            target="_blank"
+            class="pill-link"
+          >
+            View Full, Up-to-date Coursera Certificates ↗
+          </a>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Let’s <span>Connect</span></h2>
+        <p class="section-subtitle">
+          Open to internships, junior roles, and collaborations around AI, software testing,
+          backend systems, and intelligent automation.
+        </p>
+
+        <div class="contact-card">
+          <p style="font-size:0.92rem; color:#e5e7eb;">
+            The best way to reach me is by email or via LinkedIn. You can also explore my code and
+            experiments on GitHub.
+          </p>
+          <div class="contact-row">
+            <!-- 🔧 Replace these placeholders with your real links -->
+             <a class="pill-link" href="https://github.com/yassinmars" target="_blank">
+              GitHub ↗
+            </a>
+            <a class="pill-link" href="https://www.linkedin.com/in/yassine-maraoui" target="_blank">
+              LinkedIn ↗
+            </a>
+            <a class="pill-link" href="mailto:yassine.maraoui2@gmail.com">
+              yassine.maraoui2@gmail.com
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span>Yassine Maraoui</span> — Built with clean HTML & CSS.</div>
+    </footer>
+  </div>
+</body>
+</html>
